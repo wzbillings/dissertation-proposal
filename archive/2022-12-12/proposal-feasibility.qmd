@@ -106,13 +106,71 @@ If we want to incorporate any data other than HAI responses, there would be a si
 
 If Amanda's project is not finished yet, this would seem to entail completing Amanda's project first.
 
-# Quantify differences in the effect of prevaccination immunity on vaccine response between vaccine doses and types using compiled data from the DIVERsity grant. {#sec-2}
+# Determine which host-specific factors are associated with longitudinal immune responses under repeated vaccination. {#sec-2}
+
+* **Hypothesis:** Individual host factors (e.g. age) and characteristics of vaccine strains and circulating virus strains influence patterns of boosting and waning observed in longitudinal immune response trajectories under repeated vaccination.
+* **Significance:** Understanding when individuals boost and wane to influenza vaccination can allow for developments in targeted healthcare which promote better vaccine effectiveness. For example, the development of targeted vaccine schedules and dosing regimens could be improved by understanding which individuals are likely to boost and wane in a given season.
+* **Innovation:** Most studies of vaccine effectiveness for influenza do not incorporate longitudinal response data into their conclusions, instead relying on cross-sectional or case-control designs. Even among studies that incorporate longitudinal data, qualitative patterns of immune response are rarely considered. We propose a novel framework of considering boosting and waning phases of trajectories separately to determine which individuals boost to which strains in a given influenza season.
+
+## Background {#sec-2a}
+
+We know that many host factors (age, birth year, arguable race and sex) contribute to an individual's observed immune response following vaccination. In my actual proposal I will describe this better. For now, see, .e.g. [@dhakal2019].
+
+In addition to understanding how host factors shape the immune response at specific moments in time (either using a cross-sectional analysis, or a regression analysis which correctly deals with repeated measurements), we are interested in how host factors shape trajectories of immune responses. Two of the major concerns with seasonal influenza vaccines are (1) whether a recipient boosts to the vaccine initially; and (2) the degree and time course of antibody waning following the immune response to the vaccine.
+
+## Exploratory Data Analysis {#sec-2b}
+
+First, we decided to explore clusters of interest using the complete trajectories of individuals who were enrolled in the study for several consecutive years. @fig-TrajClustFull shows the clusters we manually identified and how many of the individuals fell into each cluster. Understand the dynamics of the clusters can provide information on how effective the seasonal vaccine was at inducing an immune response (to a given strain) over time. We plan to explore additional clusters of interest, such as more fine-grained clusters analyzing who responded to the vaccine and when.
+
+```{r}
+#| label: fig-TrajClustFull
+#| fig-cap: |
+#|   Clusters of trajectories. Each trajectory shows an individual's HAI titer
+#|   to H1N1-California-2009 influenza over the course of the study. The time
+#|   scale here was manually registered so that trajectories of all
+#|   individuals align, but we will consider unregistered trajectories as well
+#|   during the analysis of this aim. We defined categories of qualitative
+#|   interest to visualize individual patterns of immune response.
+knitr::include_graphics(here::here("Proposal-Feasibility/Figures/02-1.png"))
+```
+
+Second, we decided to break the trajectories into seasonal components consisting of a Day 0 (vaccine time) measurement, a Day 21/28 (post-vaccination) measurement, and a Day 365 measurement (time of vaccination for the next year). This allowed us to consider all individuals who had been enrolled in the study for only two consecutive years, and allows us to analyze patterns of boosting and waning across the study sample. @fig-TrajClustTwo shows examples trajectories of this analyses, clustered into patterns of boosting and waning.
+
+```{r}
+#| label: fig-TrajClustTwo
+#| fig-cap: |
+#|   The seasonal trajectories: each trajectory represents a Day 0 measurement
+#|   at time of vaccination, a post-vaccination measurement, and a Day 365
+#|   measurement, which was actually a serum draw from the following influenza
+#|   season. Using these trajectories of three points allows us to visualize
+#|   patterns of boosting and waning, as shown here.
+knitr::include_graphics(here::here("Proposal-Feasibility/Figures/02-2.png"))
+```
+
+## Analytical plan {#sec-2c}
+
+* We expect the results of this aim to be largely qualitative, but results will be quantified where it makes sense to do so.
+* First, we plan to identify qualitative clusters of whole trajectories (similarly to what was shown previously).
+  * For example, we could identify individuals who responded to the vaccine every year as opposed to those who only responded in the first year of the cohort study.
+  * We would then examine host factor distributions in each of the clusters (such as age, comorbidities, sex, race, imprinting probabilities, and history of vaccination) to determine if there are any noticeable patterns within the cluster.
+* Secondly, we plan to identify isolated patterns of waning and boosting. Using this framework, we can mitigate the issue of antigenic drift and changing vaccine components, as there would be one trajectory per person per season per assay strain.
+* Finally, we could also consider automatic detection of trajectory clusters using statistical models, to determine if there are any clusters of scientific interest that can be identified in this manner.
+
+## Aim Feasibility {#sec-2d}
+
+We already have all of the data we need for this aim, and we seem to have already developed the main two analytic approaches we will use. As the resulting paper will be primarily descriptive rather than quantitative, we likely have a substantial portion of the conceptual framework completed. Most of the work will focus on finding interesting patterns and refining our analytic approach and narrative.
+
+I do not have a time estimate for this project, but it could be completely simultaneously with other projects while I am waiting on things that are outside of my control (draft revisions, computer time, other people doing things that I need, etc). Overall I think this aim is feasible but I have no idea how long it will take.
+
+This aim would be mainly descriptive, whether than quantitative. Comparing these patterns quantitatively on observational data which were not designed for these analyses would be difficult.
+
+# Quantify differences in the effect of prevaccination immunity on vaccine response between vaccine doses and types using compiled data from the DIVERsity grant. {#sec-3}
 
 * **Hypothesis**: the mechanistic models proposed by @zarnitsyna2016 are accurate for some patterns, but may need to be modified to account for vaccine dose and type more effectively.
 * **Significance**: heterologous prevaccination immunity is likely the single biggest challenge for seasonal influenza vaccine design. Increased vaccine dose and certain vaccine types are more likely to overcome the "antigenic ceiling" effect and avoid being out-competed by the memory B-cell response. Understanding the effect of vaccine dose and type in this context can provide critical information for vaccine design.
 * **Innovation**: most studies of prior immunity to influenza consider only homologous immunity, and often only control for prior immunity without any further considerations. Furthermore, multiple doses and vaccine types are often not considered in the same framework. Our proposal is explore the direct effect of prior (heterologous) immunity on response to multiple vaccine doses and types.
 
-## Background {#sec-2a}
+## Background {#sec-3a}
 
 **This project is a proposed extension of the exploratory analysis I conducted during Year 1 / Fall Year 2 of my program.** Based on the predictions made by Veronika's models, we expect to see a linear decrease (on a log-log scale) between increase in antigen levels after vaccination and pre-vaccination antibody levels. Furthermore, Veronika's models demonstrate an "antigenic ceiling" effect, which has also been described by some of the Cobey group's work (will need to cite this). That is, if pre-existing antibody level is high enough, there are dramatically (non-linear) diminished returns for vaccination. We aim to see where Veronika's models make predictions that are supported by the data, and any systematic differences where they do not.
 
@@ -122,7 +180,7 @@ We also plan to use sound epidemiological methods to control for host factors. F
 
 We expect that different vaccine types might behave differently, especially with respect to vaccine dose. Therefore, we aim to inspect the effect of dose quantitatively (as a numeric variable), by analyzing several vaccines with different doses across multiple study sites. This would include the analysis of effect modification by the vaccine type. The mechanistic model predicts that increased dose would increase the magnitude of the slope between increase in antibody level and pre-existing titer, as well as modulate the antigenic ceiling effect by increasing the threshold at which diminishing returns are incurred.
 
-## Exploratory data analysis {#sec-2b}
+## Exploratory data analysis {#sec-3b}
 
 See @fig-LMexample-2 for an example of the most basic linear models *for homologous strains* under this framework. Here, the intercept of the line estimates the expected vaccine boost for a completely naive participant, and the slope estimates the expected decrease in boosting for each log-unit of pre-existing immunity. For this project, we would quantify all of the homologous slopes for vaccine strains in our data, controlling for confounders, as well as longitudinal responses where necessary (e.g. H1N1-California-2009 was a component of the seasonal influenza vaccine for several consecutive years, and thus the data in @fig-LMexample-2 include multiple observations from the same subject).
 
@@ -170,13 +228,13 @@ knitr::include_graphics(here::here("Proposal-Feasibility/Figures/03-2a.png"))
 knitr::include_graphics(here::here("Proposal-Feasibility/Figures/03-2b.png"))
 ```
 
-## Analytical plan {#sec-2c}
+## Analytical plan {#sec-3c}
 
 * We would fit several linear models of log-log relationship between increase in antibody titer post-vaccination and pre-vaccination immunity, incorporating other effects (these could be simple and easily implemented frequentist models, potentially ranging to complex hierarchical Bayesian models which incorporate the multilevel structure of the data), and compare the coefficients of these models.
 * For example, the Zarnitsyna models expect the slope for the relationship between fold change in titer and log pre-existing antibody titer to be parallel for same doses of the different vaccine. We could determine "how" parallel the slopes are for each of the strains. Alternatively, we could compare the fit of the variable slopes model to the fit of the parallel slopes model, where the lines are constrained to be parallel.
 * We would incorporate dose and type as effect modifiers of this relationship. Furthermore, we would control appropriately for demographic factors to mitigate confounding by measured variables in the estimates. If multiple study sites have data on the same immune markers and vaccines, we could pool these data together using either the hierarchical framework or a meta-analytic framework, which handles error pooling in a different way.
 
-## Feasibility analysis {#sec-2d}
+## Feasibility analysis {#sec-3d}
 
 **This aim may be significantly more feasible if limited to the homologous case.** Many of the DIVERsity datasets will likely not include heterologous information anyways, and this also avoids co-dependency on the antigenic distance project. Merging the two ideas together could be a potential project after both are completed.
 
@@ -186,7 +244,7 @@ Whether this aim is feasible or not completely depends on how quickly we get acc
 
 Overall, I think this is a potentially very interesting project, but I'm hesitant to list any aims for my dissertation that require me to work with data that I might not get until a month before I have to defend. We would need to discuss whether the portion of the project that can be completed with only Ted's data is sufficient.
 
-# Describe individual differences in antigenic landscapes. {#sec-3}
+# Describe individual differences in antigenic landscapes. {#sec-4}
 
 This project was proposed by Sarah Cobey as a follow-up to Amanda Skarlupka's antigenic distance project at the DIVERsity bimonthly science meeting in November 2022. The main goal would be to analyze patterns in antigenic landscapes across subgroups of individuals -- because of the "clustering" nature of this idea, I originally had it grouped with @sec-2, but I think it is a completely separate idea.
 
@@ -194,7 +252,11 @@ The main goal of this project would be to analyze the antigenic landscapes of co
 
 I think this aim is potentially feasible, since Amanda has already calculated the antigenic landscapes. The difficult part would be figuring out how to quantify the similarity of antigenic landscapes
 
-## Original section 6
+# Determine if viral characteristics other than antigenic distance are important for predicting/modeling immune response. E.g. Justin Bahl's $T_\mathrm{eff}$ sequence data. {#sec-5}
+
+I am not sure that this aim is feasible. While it is interesting to me, I don't really know anything about bioinformatics or sequence data so it would be a steep learning curve for me, and might not be possible in conjunction with the other two aims that I have to do.
+
+# Numerical summaries for antigenic landscapes {#sec-6}
 
 * In Amanda's original paper, the main summary considered for an antigenic landscape is the AUROCC under a linear regression fit. This project would be a follow-up on Ben Cowling's idea to utilize both the slope and intercept of the linear regression fit to describe the landscape. The slope and intercept of the antigenic landscape fit might be good indicators of breadth and magnitude respectively, but using AUC can disguise the difference between these two things.
 
@@ -203,5 +265,13 @@ I think this aim is potentially feasible, since Amanda has already calculated th
 * Sarah Cobey's idea on investigating landscapes of high responders potentially fits into this aim well also -- we could determine whether high responders tend to have higher intercepts, slopes, or both or neither.
 
 * Would we also want to find other potential summaries and incorporate these into this paper? E.g. time above threshold that Amanda discussed but did not use in her analysis.
+
+# Quantify the direct effect of immunosenesence on waning immunity. {#sec-7}
+
+* Mediation analysis where birth year -> age -> immune response?
+
+* I don't know a lot about mediation analysis, but I'm pretty good at figuring out methods so I don't think that's a huge barrier here.
+
+* The bigger issue, I think, is whether or not this aim makes sense to do and answers a question that people are asking. Of course it contributes to the overall question of "What things affect flu responses" but these kinds of direct effect calculations are often not as useful for our field as they would be for policy-driven fields. Need to discuss with Andreas if this makes any sense.
 
 # References

@@ -1,0 +1,48 @@
+---
+title: |
+  Specific aims
+author: W. Zane Billings
+date: last-modified
+date-format: iso
+bibliography: refs.bib
+format:
+  docx:
+    number-sections: false
+    toc: true
+    toc-depth: 1
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+Background paragraph
+
+Our *long-term goal* is to determine how pre-existing immunity affects individual
+response to the seasonal influenza vaccine, and how this effect differs
+by host factors, vaccine types, and characteristics of the virus strain used for
+vaccination. The objective of this proposal is to focus on antigenic distance
+between the viral strain and circulating strains, and how this effect differs
+by vaccine type. Part of our proposed work involves methodological development
+for improving how antigenic distance is quantified.
+
+**Specific aim #1:** Quantify the effect of antigenic distance on the
+relationship between pre-existing immunity and immune response to the seasonal
+influenza vaccine.
+**Hypothesis #1:** While pre-existing immune titer has a strong negative
+relationship with vaccine-inducted boosting, antigenically distant strains
+will have a less deleterious effect on the immune response.
+
+**Specific aim #2:**
+
+**Specific aim #3:** Determine which summary measures of individual antigenic
+landscapes preserve the most information about an individual's immune response
+to seasonal influenza vaccination, relative to models using strain-specific
+information.
+
+Summary of innovation and significance
+
+
+
+
+<!-- END OF FILE -->
