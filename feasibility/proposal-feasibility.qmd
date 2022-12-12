@@ -186,9 +186,8 @@ Whether this aim is feasible or not completely depends on how quickly we get acc
 
 Overall, I think this is a potentially very interesting project, but I'm hesitant to list any aims for my dissertation that require me to work with data that I might not get until a month before I have to defend. We would need to discuss whether the portion of the project that can be completed with only Ted's data is sufficient.
 
-# Describe individual differences in antigenic landscapes. {#sec-3}
+# Summary measures for antigenic landscapes. {#sec-3}
 
-This project was proposed by Sarah Cobey as a follow-up to Amanda Skarlupka's antigenic distance project at the DIVERsity bimonthly science meeting in November 2022. The main goal would be to analyze patterns in antigenic landscapes across subgroups of individuals -- because of the "clustering" nature of this idea, I originally had it grouped with @sec-2, but I think it is a completely separate idea.
 
 The main goal of this project would be to analyze the antigenic landscapes of consistently high responders. If an individual responds well to one strain, how many, and which strains, do they also tend to respond well to? What host factors are associated with these patterns? See Sarah Cobey's comments during the DIVERsity November 2022 meeting.
 
@@ -203,5 +202,20 @@ I think this aim is potentially feasible, since Amanda has already calculated th
 * Sarah Cobey's idea on investigating landscapes of high responders potentially fits into this aim well also -- we could determine whether high responders tend to have higher intercepts, slopes, or both or neither.
 
 * Would we also want to find other potential summaries and incorporate these into this paper? E.g. time above threshold that Amanda discussed but did not use in her analysis.
+
+## Combining these aims
+
+* Summary measures of antigenic landscapes -- is AUC the best, or can we
+use something else (e.g. intercept/slope).
+* Case study: what patterns do we see in slopes/intercepts across high/low
+responders?
+* How does this compare to using strain-specific antigenic distance measurements?
+An ideal measure would condense an individual's entire landscape into an easy
+to understand summary. Ideally this would allow for fair comparisons across
+different panels of viruses.
+
+* **Hypothesis**:
+* **Significance**:
+* **Innovation**: 
 
 # References

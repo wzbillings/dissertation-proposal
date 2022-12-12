@@ -33,6 +33,8 @@ influenza vaccine.
 relationship with vaccine-inducted boosting, antigenically distant strains
 will have a less deleterious effect on the immune response.
 
+- How to incorporate aim 3 without making them interdependant? 
+
 **Specific aim #2:**
 
 **Specific aim #3:** Determine which summary measures of individual antigenic
