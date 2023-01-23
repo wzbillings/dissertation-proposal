@@ -41,3 +41,22 @@ Cov(b0, b1) = -sigma^2 * (xbar / Sxx) and xbar = 0 if x is centered.
 
 * Ben: should the breadth be two directional? Seems like we should expect
 people to respond better to historical strains than to new strains.
+
+## Potential papers for proposal
+
+* Antigenic distance modeling paper compliment to yang's strain-specific models
+
+* Paper comparing veronika's model predictions with our data
+
+* Paper using DIVERsity data to examine the effect of different vaccines and
+determining if we see the same host demographic patterns across the 
+different data sets
+
+* Paper exploring summary metrics for antigenic landscapes What if we use
+3d landscapes? How does use the slope/intercept compare to the AUC that
+we are using in Amanda's paper?
+
+* Paper comparing Andrea Sant's data with Ted's data. We see the same 
+patterns with t cells that we see with antibodies which implies that
+perhaps there is an underlying mechanism and the reason isn't just steric
+hindrance.

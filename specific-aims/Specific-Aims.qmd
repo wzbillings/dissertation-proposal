@@ -35,7 +35,8 @@ will have a less deleterious effect on the immune response.
 
 - How to incorporate aim 3 without making them interdependant? 
 
-**Specific aim #2:**
+**Specific aim #2:** Analyze the differences in the effect of preexisting
+immunity on homologous responses across multiple
 
 **Specific aim #3:** Determine which summary measures of individual antigenic
 landscapes preserve the most information about an individual's immune response

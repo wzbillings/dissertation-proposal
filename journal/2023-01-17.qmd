@@ -1,0 +1,23 @@
+---
+title: "WIP"
+author: Zane Billings
+date: last-modified
+date-format: iso
+bibliography: refs.bib
+format: html
+---
+
+# 2023-01-17
+
+## Todo
+- [ ] Get started on aim 1 -- need to read background
+- [ ] talk with Andreas more to figure out aims 2 and 3 specifically.
+
+## Aim 1 review
+
+* Current question: how does antigenic distance between influenza vaccine
+strains and circulating strains modulate the relationship between preexisting
+immunity and vaccine response?
+
+# 2023-01-18
+
