@@ -1,0 +1,60 @@
+# Specific Aims
+<!--
+## PG 1
+
+* Public health impact of outcome
+* Physiology/epidemiology of exposure/outcome relationship
+* Research gap
+* Overall goal
+
+* Influenza is a public health threat and a universal vaccine is the solution to pandemic preparedness.
+* Due to host heterogeneity and antigenic drift, the effectiveness of the influenza vaccine is extremely variable.
+* While individual studies have worked on characterizing these effects, we still lack quantitative predictions and we don't understand how these components interact.
+*
+-->
+
+Recent concerns about H5N1 influenza spillover events acutely highlight the need
+for a universal influenza vaccine with the ability to mitigate future pandemic
+events. However, a combination of rapid antigenic evolution and heterogeneity in
+individual host responds makes developing such a universal vaccine difficult.
+Previous literature has characterized the importance of prior immunity in a
+path-dependent context, vaccine design (including dose and route of
+administration), and antigenic distance between the vaccine and host strain, but
+robust quantitative predictions of these effects is lacking. Our *long-term
+goal* is to determine how pre-existing immunity affects individual response to
+the seasonal influenza vaccine, and how this effect differs by host factors,
+vaccine types, and characteristics of the virus strain used for vaccination.
+
+The objective of our proposal is to focus on antigenic distance between the
+vaccine strain and circulating strains, vaccine dose, and prior immunity. We
+will utilize state-of-the-art Bayesian hierarchical modeling techniques in
+conjunction with causal inference and machine learning methodologies to quantify
+these effects on the individual immune response to influenza, while taking
+complex interaction effects into account. We also propose to develop metrics for
+the quantification of the immune response to a panel of antigenically distinct
+viruses, an area which has been previously underdeveloped. Our work will
+leverage longitudinal influenza vaccination data collected by Ted Ross, Ben Cowling, and other investigators involved with the DIVERsity study (NIH project number 1R01AI170116-01).
+
+<!-- Aim 1: Amanda Ag-Dist project -->
+**Aim 1. Develop metrics for the quantification of the total immune response to an influenza vaccine, incorporating both strength and breadth.** We hypothesize that by fitting a curve to the relationship between immune response and antigenic distance from the vaccine data for a study sample tested against multiple potentially cross-protective viruses will allow us to extract information about the fitted curve which quantifies the overall effect of vaccination.
+
+<!-- Aim 2: Unnamed dose project and Veronika's models -->
+**Aim 2. Quantify the effect of vaccine dose on the effect of the vaccine after accounting for pre-existing immunity and antigenic distance.** We hypothesize that a higher vaccine dose will be able to overcome the previously observed antigenic ceiling effect induced by pre-existing immunity, and that this relationship will be modulated by the antigenic distance between the vaccine and the strain of interest.
+
+<!-- Aim 3: Yang's strain-specific model vs. antigenic distance model -->
+**Aim 3. Determine whether antigenic distance is a sufficient single measurement of difference between viral strains in the context of vaccination.** We hypothesize that the antigenic distance between a vaccine strain and another viral strain provides enough information to predict how an individual will respond to that strain following vaccination.
+
+Our work will leverage previously collected data and powerful statistical models
+in order to elucidate patterns in host response and viral evolution which drive
+individual immune responses to influenza vaccination. By understanding the
+complex network of factors which modulate the response, we can illuminate key
+factors for consideration in the development of novel vaccines, and inform
+vaccination strategies at relatively low cost. Understanding these complex
+factors is essential for strategic planning to curtail future influenza
+pandemics.
+
+
+
+
+
+<!-- END OF FILE -->

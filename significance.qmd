@@ -1,0 +1,39 @@
+# SIGNIFICANCE
+
+<!-- overview PG -->
+The rapid evolution and seasonal circulation of influenza create a susceptible
+population with incredibly heterogeneous immune repertoires. Several factors
+are known to influence baseline immunity to a particular immune strain:
+birth year, via an imprinting effect; age, via immunosenescence; demographic
+characteristics like age, sex, race, and socioeconomic status; and an
+individual's path-dependent history of influenza exposure. Individuals are
+exposed to influenza through either infection of vaccination several times
+over their lives, and exposure to varying strains leads to the development of
+a unique memory response which can be extremely different for two otherwise
+similar individuals.
+
+As influenza continues to evolve and circulate, the development of a universal
+influenza vaccine which can protect against future strains is a strategy
+for preventing the next influenza pandemic. However, the rapid evolution and seasonal circulation of influenza create a susceptible
+population with incredibly heterogeneous immune repertoires. Two ostensibly
+similar individuals can receive drastically different levels of immune protection
+from the same vaccine. 
+
+Introductory paragraph should:
+* Establish that flu is a problem and a universal vaccine is a solution
+* Establish that we do not compeltely understand the immune response to
+influenza, and determining drivers of the response is crucial for vaccine design.
+* Establish that specifically antigenic distance, dose, and preimmunity are
+drivers of the response.
+
+<!-- aim 1 PG -->
+**Aim 1. Develop metrics for the quantification of the total immune response to an influenza vaccine, incorporating both strength and breadth.**
+
+<!-- aim 2 PG -->
+**Aim 2. Quantify the effect of vaccine dose on the effect of the vaccine after accounting for pre-existing immunity and antigenic distance.**
+
+<!-- aim 3 PG -->
+**Aim 3. Determine whether antigenic distance is a sufficient single measurement of difference between viral strains in the context of vaccination.**
+
+{{< pagebreak >}}
+<!-- END -->

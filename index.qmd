@@ -1,0 +1,11 @@
+# Project Summary {.unnumbered}
+
+This is the abstract.
+
+# Project Narrative {.unnumbered}
+
+Influenza is a respiratory disease that occurs in seasonal epidemics worldwide. The Centers for Disease Control and Prevention recommend annual vaccination against seasonal influenza with a modified vaccine for adults in the United States, but the effectiveness of these vaccines varies greatly across seasons and individuals. Improved understanding of the drivers of the immune response following vaccination is crucial for improving influenza vaccines.
+
+{{< pagebreak >}}
+
+<!-- End of file -->
