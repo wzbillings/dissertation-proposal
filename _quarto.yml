@@ -6,7 +6,7 @@ book:
   output-file: "proposal"
   title: |
     Modulation of the Immune Response to Influenza Vaccination by Host and
-    Vaccine Factors
+    Vaccine Characteristics
   subtitle: |
     Dissertation proposal by
   author: "W. Zane Billings"
@@ -16,7 +16,6 @@ book:
     - index.qmd
     - aims.qmd
     - significance.qmd
-    - innovation.qmd
     - approach.qmd
     - references.qmd
 
@@ -26,3 +25,5 @@ format:
   docx:
     reference-doc: template.docx
     toc: false
+    bibliography: references.bib
+    csl: aje.csl

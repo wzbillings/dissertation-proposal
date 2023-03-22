@@ -13,48 +13,57 @@
 *
 -->
 
-Recent concerns about H5N1 influenza spillover events acutely highlight the need
-for a universal influenza vaccine with the ability to mitigate future pandemic
-events. However, a combination of rapid antigenic evolution and heterogeneity in
-individual host responds makes developing such a universal vaccine difficult.
-Previous literature has characterized the importance of prior immunity in a
-path-dependent context, vaccine design (including dose and route of
-administration), and antigenic distance between the vaccine and host strain, but
-robust quantitative predictions of these effects is lacking. Our *long-term
-goal* is to determine how pre-existing immunity affects individual response to
-the seasonal influenza vaccine, and how this effect differs by host factors,
-vaccine types, and characteristics of the virus strain used for vaccination.
+Recent concerns about H5N1 influenza spillover events highlight the need for a
+universal influenza vaccine with the ability to mitigate future pandemic events.
+However, a combination of rapid antigenic evolution and heterogeneity in
+individual host response makes developing such a universal vaccine difficult.
+Previous literature has characterized the importance of prior immunity, vaccine
+design, and antigenic distance between the vaccine and host strain. The goal of
+my thesis is to understand how pre-existing immunity affects individual response
+to the seasonal influenza vaccine, and how this effect is modified by other
+factors. A better understanding of the host immune response will inform the
+design and evaluation of vaccines which induce a broader, more robust response.
 
-The objective of our proposal is to focus on antigenic distance between the
-vaccine strain and circulating strains, vaccine dose, and prior immunity. We
-will utilize state-of-the-art Bayesian hierarchical modeling techniques in
-conjunction with causal inference and machine learning methodologies to quantify
-these effects on the individual immune response to influenza, while taking
-complex interaction effects into account. We also propose to develop metrics for
-the quantification of the immune response to a panel of antigenically distinct
-viruses, an area which has been previously underdeveloped. Our work will
-leverage longitudinal influenza vaccination data collected by Ted Ross, Ben Cowling, and other investigators involved with the DIVERsity study (NIH project number 1R01AI170116-01).
+We will use Bayesian hierarchical models, causal inference, and machine learning
+methods to quantify these effects. Our models will account for interactions
+between predictors, nonlinear effects, and clustered measurements. We will
+analyze longitudinal influenza vaccination data from the UGAFluVac cohort study
+(PI: Ross), wherein individuals provided serum samples, potentially for multiple
+years, and these samples were tested against a panel of historical viruses. We
+will also combine the UGAFluVac data with other data sources provided by Ben
+Cowling, Andrea Sant, and potentially other investigators involved with the
+DIVERsity study (NIH project number 1R01AI170116-01) or the CIVR-HRP NIH CIVICs
+site (NIH project number 75N93019C00052) to answer questions about vaccine dose
+and pre-existing immunity.
 
 <!-- Aim 1: Amanda Ag-Dist project -->
-**Aim 1. Develop metrics for the quantification of the total immune response to an influenza vaccine, incorporating both strength and breadth.** We hypothesize that by fitting a curve to the relationship between immune response and antigenic distance from the vaccine data for a study sample tested against multiple potentially cross-protective viruses will allow us to extract information about the fitted curve which quantifies the overall effect of vaccination.
+**Aim 1. Develop metrics for the quantification of the total immune response to an influenza vaccine, incorporating both strength and breadth.**
+Using the UGAFluVac data, we will analyze the relationship between immune
+response and *antigenic distance*, a measurement of how different the assay
+strain and the vaccine strain are. We will develop metrics for quantifying the
+overall strength of the immune response to a panel of historical strains, and
+the breadth of the response -- intuitively, how the immune response diminishes
+as antigenic distance increases. We will also use subsamples of the UGAFluVac
+data to analyze the robustness of these metrics across differing panels of
+historical viruses.
 
 <!-- Aim 2: Unnamed dose project and Veronika's models -->
-**Aim 2. Quantify the effect of vaccine dose on the effect of the vaccine after accounting for pre-existing immunity and antigenic distance.** We hypothesize that a higher vaccine dose will be able to overcome the previously observed antigenic ceiling effect induced by pre-existing immunity, and that this relationship will be modulated by the antigenic distance between the vaccine and the strain of interest.
+**Aim 2. Quantify the role of pre-vaccination titer, prior vaccinations, vaccine dose, and antigenic distance on individual vaccine response.**
+Influenza vaccinations provide diminishing boosts for recipients with high
+antibody titers, called the "antibody ceiling" effect. However, the threshold
+and rate of diminishing boosts depend on several other host and vaccine factors,
+including prior vaccination history, vaccine dose, and antigenic distance. We
+will use hierarchical statistical models and mechanistic models to disentangle
+the individual effects and interactions.
 
 <!-- Aim 3: Yang's strain-specific model vs. antigenic distance model -->
-**Aim 3. Determine whether antigenic distance is a sufficient single measurement of difference between viral strains in the context of vaccination.** We hypothesize that the antigenic distance between a vaccine strain and another viral strain provides enough information to predict how an individual will respond to that strain following vaccination.
-
-Our work will leverage previously collected data and powerful statistical models
-in order to elucidate patterns in host response and viral evolution which drive
-individual immune responses to influenza vaccination. By understanding the
-complex network of factors which modulate the response, we can illuminate key
-factors for consideration in the development of novel vaccines, and inform
-vaccination strategies at relatively low cost. Understanding these complex
-factors is essential for strategic planning to curtail future influenza
-pandemics.
-
-
-
-
+**Aim 3. Explore the effect of vaccine dose on the homologous response.**
+The UGAFluVac cohort allows participants over the age of 65 to choose whether
+they receive FluZone standard dose or FluZone high dose, and Andrea Sant's
+cohort study administered FluZone HD to individuals aged 18 -- 49. However, the
+Sant data only contains measurements for homologous HAI responses. By combining
+the two datasets, we can use causal inference and hiearchical modeling
+techniques to understand the effect of dose, and how this relates to previous
+mechanistic modeling predictions.
 
 <!-- END OF FILE -->

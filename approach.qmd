@@ -1,12 +1,240 @@
+---
+execute: 
+  echo: false
+---
 # APPROACH
 
-## Overview
+## Data description
+
+We will combine data from multiple influenza vaccination
+cohort studies for our analyses. At the time of writing, we have data from
+two cohort studies conducted by Ted Ross, one
+study conducted by Andrea Sant and Angela Branche (see @gouma2020a), and
+a collaboration with Ben Cowling, who is the PI of several similar studies and
+has offered to share data with us. The two studies conducted by Ted Ross
+provide a unique opportunity to study heterologous antibody responses to influenza
+vaccination, as a wide historical panel of assays was conducted for each
+individual for several years of the study. Combining Ross' data with data
+from Sant and Cowling will allow for us to compare the immunogenicity of
+multiple vaccines, and increase the power of our analyses of host factors.
+
+We will refer to both of Ross' cohort studies conjointly as the **UGAFluVac**
+study. This data set consists of longitudinal HAI measurements taken at
+three different study sites. From fall 2013 to spring of 2016, participants
+were recruited at one of two study sites in either Pittsburg, PA or Stuart, FL.
+Sample collection is further detailed in @nunez2017, among other references.
+Briefly, the study is a prospective open cohort design. Participants were adults aged 18 and up who were
+allowed to repeat each year, and the data includes a unique ID per participant
+that allows for the identification of longitudinal measurements. Each participant
+recieved a pre-vaccination blood draw, and was then administered a split-inactivated
+Fluzone seasonal influenza vaccine (Sanofi Pasteur). Patients aged 65 or older
+could opt to receive Fluzone High Dose instead. At the PA study site in 2013,
+some patients were administered an intradermal vaccine rather than the standard
+intramuscular Fluzone. Followup whole blood draws
+were targeted for 21 days post-vaccination. 
+
+Processed sera were used for
+HAI assays following standard protocols against the homologous vaccine strains
+as well as a heterologous panel of historical strains. The starting dilution
+was 1:10 and assays which did not agglutinate at the starting dilution were
+coded as 1:5. For all further analyses, we will use the reciprocal titer
+transformed as
+$$\text{analysis titer} = \log_2 \left(\text{raw reciprocal titer} / 5 \right).$$
+This transformation serves to set 0 as the limit of detection on the log scale.
+
+Additionally, the following data were collected from patients by a survey prior
+to vaccination: year of birth, age, gender (the covariate is listed as gender but is coded as male/female only), and race/ethnicity.
+
+In January 2017, the study moved to the University of Georgia, Athens, GA. The
+paper @wu2022 contains a description of the study, but at the time of writing,
+no published paper contains a complete description of the study cohort. The
+study design was similar, with additional covariate information collected:
+complete date of birth, sex assigned at birth, race/ethnicity, BMI, height,
+weight, and questions about smoking and comorbidities. Beginning in the
+2017-2018 flu season, participants aged 10 and older were additionally
+recruited for the study. The HAI assays were conducted in the same way. The
+postvaccination time point target was changed to Day 28 beginning in fall 2018.
+Finally, additional subcohorts were administered other vaccines at certain
+points during the study. See @fig-michael for details.
+
+```{r}
+#| label: fig-michael
+#| fig-width: 6
+#| fig-cap: "Study diagram showing the subcohorts and associated timepoints
+#| collected during the ongoing UGA study. The diagram was created by Michael
+#| Carlock, the CIVR-HRP research director."
+knitr::include_graphics(here::here("figures", "study-diagram.png"))
+```
+
+We will refer to the data provided by Andrea Sant and Angela Branche as the
+**RocFluVac** study. We have not yet finished cleaning and processing the data,
+but it contains similar HAI measurements for homologous strains only,
+participants were administered a variety of vaccines (including Fluzone HD
+administered to participants aged 18 - 49), and also contains data on
+T cell responses to the vaccine. See @gouma2020a for one brief
+explanation of the data.
 
 ## Aim 1
 
+For this aim, we will use the cohort data collected by Ted Ross.
+
+### Preliminary methods and results
+
+We have calculated several metrics of antigenic distance, and will compare
+the year-based method [@auladell2022], the dominant *p*-epitope sequence based method
+[@gupta2006], and a distance based on antigenic cartography [@cai2012; @fonville2014]. To compute the dominane *p*-epitope distance, the pairwise
+Hamming distances are computed between the amino acid sequences of each of
+the five hemagglutinin head epitopes, and these are divided by the length
+of their respective sequences. The dominant *p*-epitope measurement is the
+maximum of each of these probabilities, representing the different between
+the two strains at their most different epitope.
+
+Antigenic cartography analyses were conducted by Amanda
+Skarlupka, PhD, who continues to work with us on this project. In short,
+antigenic cartography uses a matrix where each row represents an individual
+in the study and each column represents an influenza strain. The cells of
+the matrix are populated with individual $i$'s titer to strain $j$.
+Multidimensional scaling is used to reduce the matrix to a specified column
+dimension, while minimizing the change in the Euclidean distances between measurements. After performing iterative MDS on
+a variety of target dimensions, we found that two dimensions was satisfactory,
+and our maps were similar to those in @fonville2014. After calculating the
+MDS maps, we then obtained antigenic distances as the Euclidean distance
+between map coordinates of the vaccine strain and the other strains in the
+panel following the method of @cai2012. For the purposes of this analysis, we ignored longitudinal measurements between
+individuals, and treated each observation of an individual as a unique measurement. Finally, all of the antigenic distance were normalized *for each vaccine strain*. Therefore, each vaccine strain had a distance of 0 with itself, and the most distant historical strain had a distance of 1 with that strain. (We normalized all three of the distance measurements in this way.)
+
+After computing the normalized distance measurements, we fit simple linear
+regression models with either postvaccination titer (measuring the absolute
+immune response postvaccination) or fold-change in titer (measuring the
+relative boost postvaccination) against antigenic distance. @fig-amandafits
+shows sample linear regression models following this protocol for two
+vaccine strains.
+
+Our proposed metrics for evaluating the **strength**, **breadth**, and **overall
+response** are the intercept of the regression line, slope of the regression line,
+and AUC respectively. The intercept measures how strong the response is to the
+homologous strain, the slope describes how the response weakens linearly as antigenic distance increases, and the AUC provides a framework for combining the
+strength and breadth measurements into one measurement of overall response.
+
+```{r}
+#| label: fig-amandafits
+#| fig-width: 5
+#| fig-cap: "Fitted models with titer outcomes and antigenic distance as the
+#| only predictor. The metrics reported are for titer increase for simplicity."
+
+knitr::include_graphics(here::here("Figures", "dist-linear-fits.png"))
+```
+
+As a case study to motivate our framework, we plan to analyze differences
+in these three metrics between the Fluzone SD and Fluzone HD vaccines, to determine
+if the high dose vaccine elicits a stronger or broader response in our cohort, as shown in @fig-distdose. Our preliminary results suggests that this effect
+differs qualitatively across vaccines, and we plan to analyze which vaccines show
+the most notable differences between strains.
+
+```{r}
+#| label: fig-distdose
+#| fig-width: 5
+#| fig-cap: "Linear models for titer increase vs. antigenic distance, stratified
+#| by vaccine dose. The same metrics are reported for both doses."
+
+knitr::include_graphics(here::here("Figures", "dist-dose-fits.png"))
+```
+
+### Proposed future methods
+
+Going forward, we plan to consider more flexible models than the simple
+linear regression models we used in this step of the analysis. We will consider
+restricted spline GAMs and LOESS to fit a potentially nonlinear effect of
+antigenic distance, which we would expect in the presence of original antigenic sin if our panel contains strains which are distant enough to confer no cross-protection. We will also implement Bayesian multilevel generalizations of
+both the linear and spline models, in order to incorporate between-subject
+variability into the overall model fit.
+
+We will then compare our metrics to traditional metrics, notably the mean titer
+increase, HAI composite score [@abreu2020], and proportion of seroconverted
+strains, all calculated for each individual. In order to determine whether
+our proposed metrics are more robust than traditional metrics, we will
+subsample measurements from our cohort in order to mimic the use of
+different virus panels across labs. For $k$ labs, we will subsample $p$ strains
+from our panel, plus the homologous strain. For each of these panels, we will
+calculate the metrics for each individual, and then analyze the variability of
+mean metrics across labs.
+
+Finally, we will explore weighting schema for our metrics. The unweighted
+AUC assigns equal weight to strains of all antigenic distances, but perhaps
+we would prefer to weight the response to distant strains higher or
+lower than similar strains--for example, if we are primarily considered with
+boosting the response to a specific pandemic strain, we could assign less
+weight to distant strains. But if we are considering candidates for a
+broadly reactive vaccine, we could weight distant strains higher in order to
+favor vaccine candidates that induce responses to the most distant strains.
+Examples of weighting schema are shown in @fig-weights.
+
+```{r}
+#| label: fig-weights
+#| fig-width: 5
+#| fig-cap: "Example weighting schema for AUC measurements. In the linear
+#| scheme, weights decrease linearly with antigenic distance. In the 2
+#| antigenic unit scheme, all strains which are within two antigenic units
+#| on the cartography map (or equivalent with the other distances) are
+#| weighted equally, while strains that are further away are not included
+#| in calculating the AUC."
+
+knitr::include_graphics(here::here("Figures", "Weighting-schema.png"))
+```
+
 ## Aim 2
 
+For this aim, we will use the UGAFluVac data.
+
+### Preliminary methods and results
+
+paragraph about variable importance and mada results -- include plot
+if it can be salvaged
+
+paragraph about CIVIC EDA, we have explored all these things independently
+but we know they interact
+
+paragraph about slopes and prevaccination titers to show we know they interact
+
+### Proposed future methods
+
+First, we will expand and refine our preliminary machine learning approach to include
+all predictors of interest. We use random forest and other similar models
+to quantify the predictive power of each variable using permutation importance. These models can learn nonlinear and interaction effects without prior specification and
+thus will allow us to understand how
+well all we can expect inferential models to capture trends in the outcome.
+
+After we understand how much of the post-vaccination titer can be explained
+by the data we have, we will build Bayesian hierarchical models to take
+advantage of the clustered structure of the data. These hierarchical models
+will be allow us to make inferences about the relationships between
+variables, rather than only quantify the predictive power. Furthermore, we
+can implement random effects in these models to partially absorb unmeasured
+confounding, which is not possible within a predictive machine learning
+framework. However, we can compare the overall predictive power of our
+inferential models to the best predictive models.
+
+Finally, we will modify previously developed mechanistic models [@zarnitsyna2015; @zarnitsyna2016] which model steric hindrance between multiple epitopes of the same antigen. The model for steric hindrance is mathematically similar to how we would model differences in binding avidity between antigenically distance strains, so by incorporating a notion of antigenic similarity, we can use these models to predict how the relationship between
+dose, prior immunity, and vaccine response varies with antigenic distance. We will compare the model predictions with the predictions made by our machine learning and inferential models. A notable limitation of the mechanistic models in this case is that we will not be able to make predictions about the effect of serial repeated vaccinations as we hope to do for the hierarchical models.
+
 ## Aim 3
+
+For this aim, we will combine the UGAFluVac data, RocFluVac data, and
+any applicable data provided by Ben Cowling.
+
+### Preliminary methods and results
+
+Not sure we have any preliminary data here -- maybe I can find the
+contrast plot that I made in Amanda's project? That would be the ATE
+assuming no confounding which is not ideal but is preliminary
+
+Include a DAG here limited to only show the variables we can include
+
+Include the previous plot where we compared Ted's and Andrea's data?
+
+### Proposed future methods
+
+summary of causal inference methods to determine the effect of dose
 
 {{< pagebreak >}}
 <!-- END -->
