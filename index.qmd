@@ -1,24 +1,38 @@
-# Project Summary {.unnumbered}
 
-Current influenza vaccines fail to project against novel strains. The
-development of a universal influenza vaccine is hindered by a current lack
-of understanding of factors driving variation in the immune response to
-influenza. We will use longitudinal cohort data from multiple sources to
-explore how characteristics of vaccines interact with characteristics of the
-vaccine recipient in order to clarify potential drivers and mechanisms of the
-immune response to vaccination. Understanding such drivers will allow for
-precise evaluation and targeted development of universal vaccine candidates.
-We aim to explore how antigenic differences between the vaccine strain and
-historical strains (a surrogate for potential future strains) interact with
-the preexisting immune repertoire of the recipient, and how vaccine dose and
-prior vaccination history can modulate this relationship. In addition, we will
-propose metrics for the fair evaluation of vaccine candidates to a wide
-variety of historical strains, which can allow the selection of an optimal
-broadly reactive vaccine.
+**Committee chair:** Andreas Handel
 
-# Project Narrative {.unnumbered}
+**Committee members:** Ye Shen, Amy Winter, Natalie Dean
 
-Influenza is a respiratory disease that occurs in seasonal epidemics worldwide. The Centers for Disease Control and Prevention recommend annual vaccination against seasonal influenza with a modified vaccine for adults in the United States, but the effectiveness of these vaccines varies greatly across seasons and individuals. Improved understanding of the drivers of the immune response following vaccination is crucial for improving influenza vaccines.
+### {.unnumbered}
+
+# PROJECT SUMMARY {.unnumbered}
+
+Vaccine efficacy for seasonal influenza is typically low, especially when
+strains used in vaccine formulation are mismatched to circulating strains. Such
+vaccines often offer even less protection from novel strains -- the 2008
+seasonal influenza vaccine may have even worsened immune responses to the novel
+2009 pandemic strain. The development of a universal influenza vaccine is
+hindered by a lack of understanding of factors driving variation in the immune
+response to influenza. We will use longitudinal cohort data from multiple
+sources to explore how characteristics of vaccines interact with characteristics
+of the vaccine recipient to clarify potential drivers and mechanisms of the
+immune response to vaccination. We aim to explore how antigenic differences
+between the vaccine strain and historical strains (a surrogate for potential
+future strains) interact with the preexisting immune repertoire of the
+recipient, and how vaccine dose and prior vaccination history can modulate this
+relationship. In addition, we will propose metrics for the fair evaluation of
+vaccine candidates to multiple historical strains, which can allow the selection
+of an optimal broadly reactive vaccine. Our analysis will allow for improved
+development and evaluation of universal vaccine candidates.
+
+# PROJECT NARRATIVE {.unnumbered}
+
+Influenza is a respiratory disease that occurs in seasonal epidemics worldwide.
+The Centers for Disease Control and Prevention recommend annual vaccination
+against seasonal influenza with a modified vaccine for adults in the United
+States, but the effectiveness of these vaccines varies greatly across seasons
+and individuals. Improved understanding of the drivers of the immune response
+following vaccination is crucial for improving influenza vaccines.
 
 {{< pagebreak >}}
 

@@ -5,8 +5,8 @@ project:
 book:
   output-file: "proposal"
   title: |
-    Modulation of the Immune Response to Influenza Vaccination by Host and
-    Vaccine Characteristics
+    Impact of Host and Vaccine Characteristics on Immune Responses following
+    Influenza Vaccination
   subtitle: |
     Dissertation proposal by
   author: "W. Zane Billings"
@@ -27,3 +27,6 @@ format:
     toc: false
     bibliography: references.bib
     csl: aje.csl
+
+execute: 
+  echo: false
