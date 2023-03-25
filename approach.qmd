@@ -19,26 +19,27 @@ from Sant and Cowling will allow for us to compare the immunogenicity of
 multiple vaccines, and increase the power of our analyses of host factors.
 
 We will refer to both of Ross' cohort studies conjointly as the **UGAFluVac**
-study. This data set consists of longitudinal HAI measurements taken at
-three different study sites. From fall 2013 to spring of 2016, participants
-were recruited at one of two study sites in either Pittsburgh, PA or Stuart, FL.
+study. This data set consists of longitudinal HAI measurements taken at three
+different study sites. From fall 2013 to spring of 2016, participants were
+recruited at one of two study sites in either Pittsburgh, PA or Stuart, FL.
 Sample collection is further detailed in @nunez2017, among other references.
-Briefly, the study is a prospective open cohort design. Participants were adults aged 18 and up who were
-allowed to repeat each year, and the data includes a unique ID per participant
-that allows for the identification of longitudinal measurements. Each participant
-received a pre-vaccination blood draw, and was then administered a split-inactivated
-Fluzone seasonal influenza vaccine (Sanofi Pasteur). Patients aged 65 or older
-could opt to receive Fluzone High Dose instead. At the PA study site in 2013,
-some patients were administered an intradermal vaccine rather than the standard
-intramuscular Fluzone. Followup whole blood draws
-were targeted for 21 days post-vaccination. 
+Briefly, the study is a prospective open cohort design. Participants were adults
+aged 18 and up who were allowed to repeat each year, and the data includes a
+unique ID per participant that allows for the identification of longitudinal
+measurements. Each participant received a pre-vaccination blood draw, and was
+then administered a split-inactivated standard dose (SD) Fluzone seasonal
+influenza vaccine (Sanofi Pasteur). Patients aged 65 or older could opt to
+receive Fluzone High Dose (HD) instead. At the PA study site in 2013, some
+patients were administered an intradermal vaccine rather than the standard
+intramuscular Fluzone. Followup whole blood draws were targeted for 21 days
+post-vaccination.
 
 Processed sera were used for HAI assays following standard protocols against the
 homologous vaccine strains as well as a heterologous panel of historical
 strains. The starting dilution was 1:10 and assays which did not agglutinate at
 the starting dilution were coded as 1:5. For all further analyses, we will use
 the reciprocal titer transformed as
-$$\text{analysis titer} = \log_2 \left(\text{raw reciprocal titer} / 5 \right).$$
+$\text{analysis titer} = \log_2 \left(\text{raw reciprocal titer} / 5 \right).$
 This transformation serves to set 0 as the limit of detection on the log scale.
 
 Additionally, the following data were collected from patients by a survey prior
@@ -94,7 +95,7 @@ Skarlupka, PhD, who continues to work with us on this project. In short,
 antigenic cartography uses a matrix where each row represents an individual
 in the study and each column represents an influenza strain. The cells of
 the matrix are populated with individual $i$'s titer to strain $j$.
-Multidimensional scaling is used to reduce the matrix to a specified column
+Multidimensional scaling (MDS) is used to reduce the matrix to a specified column
 dimension, while minimizing the change in the Euclidean distances between measurements. After performing iterative MDS on
 a variety of target dimensions, we found that two dimensions was satisfactory,
 and our maps were similar to those in @fonville2014. After calculating the
@@ -115,8 +116,8 @@ Our proposed metrics for evaluating the **magnitude**, **breadth**, and
 regression line, and area under the regression line respectively. The intercept
 measures how strong the response is to the homologous strain, the slope
 describes how the response weakens linearly as antigenic distance increases, and
-the AUC provides a framework for combining the strength and breadth measurements
-into one measurement of overall response.
+the AUC provides a framework for combining the magnitude and breadth measurements
+into one measurement of overall strength of the vaccine-induced response.
 
 ```{r}
 #| label: fig-amandafits
@@ -348,7 +349,10 @@ measurements instead of indicators for strain types.
 #| estimated RMSE when the variable is not permuted. The model was trained
 #| using a subset of 70% of the UGAFluVac data, and these RMSE for
 #| both the permutated and non-permuted data were calculated using the
-#| holdout set of the remaining 30% of data."
+#| holdout set of the remaining 30% of data. Despite using a random forest
+#| model, which can detect interactions and nonlinear effects, any effects
+#| that interact with age or dose may be artificially dampened in this
+#| analysis due to class imbalance."
 
 knitr::include_graphics(here::here("Figures", "rf-vip-edit.png"))
 ```

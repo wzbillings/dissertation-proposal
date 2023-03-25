@@ -301,12 +301,15 @@ immunogenicity of a standard influenza vaccine.
 ```{r}
 #| label: fig-dose-age
 #| out-width: 6.25in
-#| fig-cap: "While high dose vaccines have been shown to improve the immune
-#| response in elderly individuals, there is little empirical evidence
-#| showing the effect of high dose vaccines in young and middle-aged
-#| vaccine recipients. While some preliminary data suggests a similar benefit
-#| due to dose in younger populations, it is currently unclear how vaccine dose
-#| and age interact."
+#| fig-cap: "High dose (HD) vaccines can induce a stronger immune response in
+#| elderly participants than standard dose (SD). While SD vaccines can
+#| elicit a satisfactory immune response in younger participants, an HD
+#| vaccine still induces a larger antibody response. However, the exact
+#| dose response relationship for intermediate doses (top right graph, showing
+#| three potential dose-response relationships) and the
+#| relationship between dose and age (bottom right graph, showing one
+#| potential dose-age relatiopnship) remain unclear. We also expect the
+#| effect of dose to differ across vaccine formulations."
 
 knitr::include_graphics(here::here("Figures", "Schematics", "dose-age.png"))
 ```
