@@ -2,10 +2,9 @@
 
 Influenza rapidly evolves to escape current vaccines through two major
 mechanisms: antigenic drift and shift [@kim2018;
-@petrova2017]. Antigenic drift is the gradual process of accumulating mutations,
-driven by host selective pressure and the low fidelity rate of the influenza
-polymerase. Antigenic shifts are sudden and abrupt changes in influenza
-antigens, which occur by recombination with antigenically distant strains. See
+@petrova2017]. Antigenic drift is the gradual process of mutation, driven by
+selective pressure. Antigenic shifts are sudden and abrupt changes in influenza
+antigens, which occur by recombination with other strains. See
 @fig-driftshift.
 
 ```{r}
@@ -21,31 +20,32 @@ antigens, which occur by recombination with antigenically distant strains. See
 knitr::include_graphics(here::here("Figures", "Schematics", "drift-shift.png"))
 ```
 
-All currently available seasonal influenza vaccines focus on four lineages of
-influenza, which are predicted to be the dominant circulating strains for the
-upcoming season. The seasonal vaccine is thus often ineffective at preventing
-infection by new antigens that arise spontaneously from spillover events,
-leading to pandemics like the 2009 H1N1 outbreak [@trifonov2009]. The highly
-pathogenic H5N1 spillover cases in early 2023 [@cdc2023] acutely demonstrate the
-need for a *universal* influenza vaccine that is broadly protective, and
-provides protection against emergent strains. Furthermore, seasonal epidemic
-influenza still has a substantive burden [@bolek2023; @cdc2021; @sullivan2019],
-especially in children and older adults [@li2023; @lozano2012]. Vaccine
-effectiveness (VE) varies widely, and is typically lower when strains selected
-for inclusion in seasonal vaccines do not match the strains which actually
-circulate [@erbelding2018; @belongia2016; @okoli2021]. Even when strains are
-correctly matched, VE rarely exceeds 50%.
+Seasonal epidemic influenza has a substantive burden [@bolek2023; @cdc2021;
+@sullivan2019], especially in children and older adults [@li2023; @lozano2012].
+Vaccine effectiveness (VE; a measurement of how protective the vaccine is)
+varies widely, and is typically lower when strains used in the seasonal vaccine
+do not match circulating strains [@erbelding2018; @belongia2016; @okoli2021].
+Even when strains are correctly matched, VE rarely exceeds 50%. The current
+strategy of predicting circulating strains to determine the formulation of the
+influenza vaccine also leads to low pandemic preparedness. The spontaneous
+emergence of new influenza strains, as with the 2009 H1N1 pandemic
+[@trifonov2009] or the highly pathogenic H5N1 spillover cases in early 2023
+[@cdc2023] also demonstrate the need for a broadly protective influenza vaccine.
+A *universal* vaccine, which protects against current and future influenza
+variants has the potential to reduce the burden of seasonal influenza and
+mitigate future pandemics.
 
 Unfortunately, designing a universal influenza vaccine is challenging [@wei2020;
-@vogel2020; @henry2018]. Understanding the immune response to influenza is a
-major landmark for improving vaccine design, but is
-complicated by the frequent antigenic innovations of influenza. Since the immune response to a vaccine depends on an individual's history of infection and vaccination events (@fig-het-pop), the susceptible
-population contains incredibly diverse immune repertoires, even after
-controlling for imprinting effects and prior vaccination. Decomposing the
-immune response to novel influenza strains is an open
-problem. Dissecting the components of the response would yield key insights into
-the design of vaccines which are reliably broadly protective for individuals
-regardless of their immune state at time of vaccination [@erbelding2018].
+@vogel2020; @henry2018]. Understanding the immune response to influenza, in the
+context of rapid evolution of new variants, is a major landmark for improving
+vaccine design. Since the immune response to a vaccine depends on an
+individual's history of infection and vaccination events (@fig-het-pop), the
+susceptible population contains incredibly diverse immune repertoires.
+Decomposing the immune response to novel influenza strains into understandable
+effects is an open problem. Dissecting the components of the response would
+yield key insights into the design of vaccines which are reliably broadly
+protective for individuals regardless of their immune state at time of
+vaccination [@erbelding2018].
 
 ```{r}
 #| label: fig-het-pop
@@ -62,7 +62,6 @@ regardless of their immune state at time of vaccination [@erbelding2018].
 knitr::include_graphics(here::here("Figures", "Schematics", "het-pop.png"))
 ```
 
-
 ## Aim 1
 
 There is no universally accepted method for quantifying the overall strength of
@@ -71,19 +70,20 @@ efficacy are expensive, correlates of protection (CoP) are measured instead.
 Several CoPs are currently used to test the efficacy of influenza vaccine
 candidates, but there is no consensus on which, if any, are best [@krammer2019].
 The most common CoP used in practice is the *hemagglutination inhibition (HAI)
-titer*. We will focus on HAI titer in this project, but the methods we propose
-could be applied to any quantitative CoP.
+titer*. We will focus on HAI titer, but the methods we propose could be applied to
+any quantitative CoP.
 
-HAI is correlated with protection from influenza with a 50% protection titer of
-1:40 [@hobson1972; @coudeville2010]. If an individual's reciprocal titer is 40
-or greater for a particular strain of influenza, the individual is said to be
+HAI is correlated with protection from influenza, with an individual titer of
+1:40 corresponding to approximately 50% protection [@hobson1972;
+@coudeville2010]. If an individual's reciprocal titer is 40 or greater for a
+particular strain of influenza, the individual is said to be
 *seroprotected* against that strain. If a vaccine induces a 4-fold or greater
 increase in HAI titer, with the final post-vaccination measurement above 40, the
 individual is said to have *seroconverted* against that strain. Seroconversion
-and seroprotection are commonly used dichotomous clinical endpoints for
-assessing the immunogenicity of an influenza vaccine candidate. An assay using the
-vaccine strain is said to be *homologous*, while an assay using any other
-strain is said to be *heterologous*.
+and seroprotection are commonly used clinical endpoints for assessing the
+immunogenicity of an influenza vaccine candidate. An assay using the vaccine
+strain is said to be *homologous*, while an assay using any other strain is said
+to be *heterologous*.
 
 Many vaccine studies only measure the immune response to homologous strains,
 which we will call the **magnitude** of the response.
@@ -121,8 +121,8 @@ difficult [@einav2020].
 knitr::include_graphics(here::here("Figures", "Schematics", "het-hai.png"))
 ```
 
-Modern methods for assessing the antigenic distance between strains of influenza
-allow the development of a consistent framework for assessing the breadth of a
+Modern methods for measuring the antigenic distance between strains of influenza
+will allow us to develop a consistent framework for assessing the breadth of a
 vaccine candidate. The simplest method for computing antigenic distance is the
 *time-based* method, where the antigenic distance is taken as the difference in
 isolation year between strains [@yang2020; @auladell2022]. Other methods include
@@ -159,10 +159,10 @@ framework for vaccine evaluation, we will compare measures of antigenic
 distance. We also plan to test the robustness of our metric to the selection of
 the virus panel in order to compare our framework to the traditional method. We
 will explore simple regression models, flexible spline models, and functional
-data analytic techniques for their potential to characterize the overall
-strength and breadth of the immune response (@fig-landscape-fits). For this aim,
-we will use longitudinal cohort data with a wide panel of heterologous responses
-for each individual collected by Ted Ross [@nunez2017; @forst2022; @wu2022].
+data analytic techniques for their potential to characterize the magnitude and
+breadth of the immune response (@fig-landscape-fits). For this aim, we will use
+longitudinal cohort data with a wide panel of heterologous responses for each
+individual collected by Ted Ross [@nunez2017; @forst2022; @wu2022].
 
 ```{r}
 #| label: fig-landscape-fits
@@ -186,13 +186,13 @@ knitr::include_graphics(here::here("Figures", "Schematics", "landscape-fits.png"
 
 Several characteristics of the vaccine and the recipient are associated with the
 immune response to the vaccine (@fig-drivers). In addition to antigenic distance
-between the vaccine strain and the strain of interest,vaccine dose [@lee2018;
+between the vaccine strain and the strain of interest, vaccine dose [@lee2018;
 @wilkinson2017; @diazgranados2014], route of administration [@carter2019;
 @kenney2004; @muhamed2006], and type [@richards2020;
 @gouma2020a; @nachbagauer2021] are associated with the overall strength of the
 immune response. Promising vaccine candidates have been developed using
-intranasal, intramuscular, and subdermal routes of administration, and
-recombinant protein or mRNA vaccines may prove to be superior to the traditional
+intranasal, intramuscular, and subdermal routes of administration.
+Recombinant protein or mRNA vaccines may prove to be superior to the traditional
 split-inactivated or live attenuated vaccine types.
 
 In addition to vaccine design choices, baseline characteristics of the vaccine
@@ -202,8 +202,8 @@ population level. Genetic differences [@brodin2015; @franco2013;
 @orru2013], epigenetic modifications, and differential gene expression
 [@henn2013;
 @hipc2017; @keshavarz2021; @wimmers2021; @zimmermann2016; @forst2022], all fall
-into the former category. In the latter category are individual characteristics
-like sex, obesity, and age.
+into the former category. Aggregable characteristics include sex, obesity, and
+age.
 
 ```{r}
 #| label: fig-drivers
@@ -213,14 +213,13 @@ like sex, obesity, and age.
 knitr::include_graphics(here::here("Figures", "Schematics", "drivers.png"))
 ```
 
-Birth sex and circulating hormones may influence the immune response to flu
-through sex-associated genetic differences and through sex-differentiated
-hormonal signaling, although results are ambiguous with no mechanism yet
-discovered [@klein2016; @fink2018; @voigt2019;@gabriel2014;@chambers2018].
-Obesity, typically measured through BMI, is associated with a decreased response
-or with more rapid waning of antibodies [@honce2019]. As individuals age, they
-undergo immunosenescence and a gradual decline in immune protection [@dugan2020;
-@goodwin2006].
+Birth sex-associated genetic differences and sex hormone levels may influence
+the immune response to influenza, although results are ambiguous with no
+mechanism yet discovered [@klein2016; @fink2018;
+@voigt2019;@gabriel2014;@chambers2018]. Obesity, typically measured through BMI,
+is associated with a decreased response or with more rapid waning of antibodies
+[@honce2019]. As individuals age, they undergo immunosenescence, a gradual
+decline in immune function and protection [@dugan2020; @goodwin2006].
 
 In addition to the immunosenescence effect of age, an individual's birth year is
 predictive of the immune response to specific strains of influenza, because
@@ -228,13 +227,13 @@ birth year is strongly associated with the first strain of influenza to which an
 individual is exposed [@gostic2016; @gostic2019; @arevalo2020]. The theory of
 imprinting (also called original antigenic sin) predicts that an individual's
 first influenza exposure leads to the development of a memory response to that
-strain. Future exposures can then activate the memory response to the original
+strain. Future exposures then activate the memory response to the original
 strain (assuming the strains are somewhat similar), which dominates the novel
-immune response to the new strain, as influenza antibodies reach a saturation
-level called the "antibody ceiling", which can vary between individuals
-[@hay2019; @hansen2021; @jacobson2015]
+immune response to the new strain. Eventually, influenza antibodies reach a
+saturation level called the "antibody ceiling", which can vary between
+individuals [@hay2019; @hansen2021; @jacobson2015].
 
-One consequence of the imprinting effect and of the antibody ceiling effect is a
+One consequence of imprinting and the antibody ceiling is a
 strong negative relationship between pre-vaccination immunity and the response
 to a vaccine [@zost2017; @gouma2020a]. Prior and repeat vaccination also has a
 strong effect on vaccine response [@dugan2020; @mclean2018], potentially
@@ -270,20 +269,20 @@ in the United States [@wei2020; @erbelding2018; @benest2021]. High-dose
 influenza vaccines are approved for use in older adults and can substantially
 improve the immune response for older and otherwise immunocompromised
 individuals [@cowling2020; @diazgranados2014; @chang2019]. While otherwise
-healthy recipients generate substantive immune responses even to fractional
+healthy recipients generate immune responses to fractional
 doses of influenza vaccine [@engler2008; @coleman2012], mechanistic models
 predict that increased dose may be useful in overcoming the negative effects of
 prior immunity and original antigenic sin [@zarnitsyna2015; @zarnitsyna2016].
 
-These mechanistic models allow for simulation of the immune response following
-vaccination for a wide range of inoculum doses, and predict that as the inoculum
-dose is increased, the effect of prevaccination titer is mitigated. That is, an
-individual with a higher prevaccination titer could potentially receive a higher
-dose than an individual with a low prevaccination titer, and observe the same
-fold-change in titer as a result of vaccination. To date, a randomized clinical
-trial comparing standard and high dose formulations of available vaccines has
-not been conducted in otherwise healthy adults 18 - 49, so these claims
-have not yet been evaluated in groups that are not elderly or immunocompromised.
+These mechanistic models allow for simulation of the immune response to a
+variety of vaccine doses, and predict that as the dose is increased, the effect
+of prevaccination titer is suppressed. That is, an individual with a higher
+prevaccination titer could potentially receive a higher dose than an individual
+with a low prevaccination titer, and observe the same fold-change in titer as a
+result of vaccination. To date, a randomized clinical trial comparing standard
+and high dose formulations of available vaccines has not been conducted in
+otherwise healthy adults 18 - 49, so these claims have not yet been evaluated in
+groups that are not elderly or immunocompromised.
 
 We will combine observational data from multiple sources to estimate the effect
 of dose on influenza vaccine response while controlling for the effects of
@@ -308,7 +307,10 @@ immunogenicity of a standard influenza vaccine.
 #| dose response relationship for intermediate doses (top right graph, showing
 #| three potential dose-response relationships) and the
 #| relationship between dose and age (bottom right graph, showing one
-#| potential dose-age relatiopnship) remain unclear. We also expect the
+#| potential dose-age relatiopnship) remain unclear. While we would ideally like
+#| to understand the dose-response relationship, we only have data on standard
+#| and high dose vaccines. Mechanistic modeling will allow us to predict
+#| potential response patterns. We also expect the
 #| effect of dose to differ across vaccine formulations."
 
 knitr::include_graphics(here::here("Figures", "Schematics", "dose-age.png"))

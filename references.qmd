@@ -1,5 +1,4 @@
 # Acknowledgements {.unnumbered}
-
 I would like to thank Amanda Skarlupka and Yang Ge for the vast amount of
 preliminary work they completed which was subsumed into this proposal. Savannah
 Hammerton and Jessica Knight provided feedback on my proposed causal modeling
@@ -8,15 +7,11 @@ Ben Cowling, Sarah Cobey, the Infectious Disease Interest Group at UGA, and the
 IMAG-MSM Immunology Subgroup. I also thank Michael Carlock, Ted Ross, and Andrea
 Sant for providing data.Finally, I thank the UGA Graduate School for providing
 research funding.
-
 Conceptual figures in the Significance section were created with
 [Biorender.com](https://biorender.com). All other figures and analyses were
 conducted using `r version$version.string`. My proposal was created using
 [Quarto](https://quarto.org/) and is typeset in the *Atkinson Hyperlegible*
 font, provided by the [Braille
 Institute](https://brailleinstitute.org/freefont).
-
 # References {.unnumbered}
-
-::: {#refs}
-:::
+::: {#refs} :::

@@ -6,53 +6,50 @@ execute:
 
 ## Data description
 
-We will combine data from multiple influenza vaccination
-cohort studies for our analyses. At the time of writing, we have data from
-two cohort studies conducted by Ted Ross, one
-study conducted by Andrea Sant and Angela Branche (see @gouma2020a), and
-a collaboration with Ben Cowling, who is the PI of several similar studies and
-has offered to share data with us. The two studies conducted by Ted Ross
-provide a unique opportunity to study heterologous antibody responses to influenza
-vaccination, as a wide historical panel of assays was conducted for each
-individual for several years of the study. Combining Ross' data with data
-from Sant and Cowling will allow for us to compare the immunogenicity of
-multiple vaccines, and increase the power of our analyses of host factors.
+We will combine data from multiple influenza vaccination cohort studies for our
+analyses. At the time of writing, we have data from two cohort studies conducted
+by Ted Ross, one study conducted by Andrea Sant and Angela Branche (see
+@gouma2020a), and a collaboration with Ben Cowling. Ben is the PI of several
+similar studies and has offered to share data with us. The two studies conducted
+by Ted Ross provide a unique opportunity to study heterologous antibody
+responses to influenza vaccination, as a wide historical panel of assays was
+conducted for each individual. Combining Ross' data with data from Sant and
+Cowling will allow for us to compare the immunogenicity of multiple vaccines,
+and increase the power of our analyses of host factors.
 
 We will refer to both of Ross' cohort studies conjointly as the **UGAFluVac**
 study. This data set consists of longitudinal HAI measurements taken at three
-different study sites. From fall 2013 to spring of 2016, participants were
-recruited at one of two study sites in either Pittsburgh, PA or Stuart, FL.
-Sample collection is further detailed in @nunez2017, among other references.
-Briefly, the study is a prospective open cohort design. Participants were adults
-aged 18 and up who were allowed to repeat each year, and the data includes a
-unique ID per participant that allows for the identification of longitudinal
-measurements. Each participant received a pre-vaccination blood draw, and was
-then administered a split-inactivated standard dose (SD) Fluzone seasonal
-influenza vaccine (Sanofi Pasteur). Patients aged 65 or older could opt to
-receive Fluzone High Dose (HD) instead. At the PA study site in 2013, some
-patients were administered an intradermal vaccine rather than the standard
-intramuscular Fluzone. Followup whole blood draws were targeted for 21 days
-post-vaccination.
+different study sites. From fall 2013 to spring 2016, participants were
+recruited at the study site in either Pittsburgh, PA or Stuart, FL. Sample
+collection is detailed in @nunez2017. Briefly, the study is a prospective open
+cohort design. Participants were adults aged 18 and up who were allowed to
+repeat each year, and the data includes a unique ID per participant that allows
+for the identification of longitudinal measurements. Each participant received a
+pre-vaccination blood draw, and was then administered a split-inactivated
+standard dose (SD) Fluzone seasonal influenza vaccine (Sanofi Pasteur). Patients
+aged 65 or older could opt to receive Fluzone High Dose (HD) instead. At the PA
+study site in 2013, some patients were administered Fluzone intradermal rather
+than the standard intramuscular Fluzone formulation. Followup whole blood draws
+were targeted for 21 days post-vaccination.
 
-Processed sera were used for HAI assays following standard protocols against the
-homologous vaccine strains as well as a heterologous panel of historical
-strains. The starting dilution was 1:10 and assays which did not agglutinate at
-the starting dilution were coded as 1:5. For all further analyses, we will use
-the reciprocal titer transformed as
-$\text{analysis titer} = \log_2 \left(\text{raw reciprocal titer} / 5 \right).$
-This transformation serves to set 0 as the limit of detection on the log scale.
+Processed sera were used for HAI assays following standard protocols. HAI assays
+were conducted using the homologous strain and a panel of heterologous strains.
+The starting dilution was 1:10 and assays which did not agglutinate at the
+starting dilution were coded as 1:5. For all further analyses, we will use the
+reciprocal titer transformed as $\text{analysis titer} = \log_2 \left(\text{raw
+reciprocal titer} / 5 \right).$ This transformation serves to set 0 as the limit
+of detection on the log scale. Additionally, the following data were collected
+from patients by a survey prior to vaccination: year of birth, age, gender (the
+covariate is listed as gender but is coded as male/female only), and
+race/ethnicity.
 
-Additionally, the following data were collected from patients by a survey prior
-to vaccination: year of birth, age, gender (the covariate is listed as gender
-but is coded as male/female only), and race/ethnicity.
-
-In January 2017, the study moved to the University of Georgia, Athens, GA. The
+In January 2017, the study moved to the University of Georgia in Athens, GA. The
 paper @wu2022 contains a description of the study, but at the time of writing,
 no published paper contains a complete description of the study cohort. The
 study design was similar, with additional covariate information collected:
 complete date of birth, sex assigned at birth, race/ethnicity, BMI, height,
 weight, and questions about smoking and comorbidities. Beginning in the
-2017-2018 flu season, participants aged 10 and older were additionally
+2017-2018 flu season, participants aged 10 and older were also
 recruited for the study. The HAI assays were conducted in the same way. The
 post-vaccination time point target was changed to Day 28 beginning in fall 2018.
 Finally, additional subcohorts were administered other vaccines at certain
@@ -81,28 +78,34 @@ For this aim, we will use the cohort data collected by Ted Ross.
 
 ### Preliminary results
 
-We have calculated several metrics of antigenic distance, and will compare
-the year-based method [@auladell2022], the dominant *p*-epitope sequence based method
-[@gupta2006], and a distance based on antigenic cartography [@cai2012; @fonville2014]. To compute the dominant *p*-epitope distance, the pairwise
-Hamming distances are computed between the amino acid sequences of each of
-the five hemagglutinin head epitopes, and these are divided by the length
-of their respective sequences. The dominant *p*-epitope measurement is the
-maximum of each of these probabilities, representing the different between
-the two strains at their most different epitope.
+We have calculated several metrics of antigenic distance, and will compare the
+year-based method [@auladell2022], the dominant *p*-epitope sequence based
+method [@gupta2006], and a distance based on antigenic cartography [@cai2012;
+@fonville2014]. To compute the dominant *p*-epitope distance, the pairwise
+Hamming distances are computed between the amino acid sequences of each of the
+five hemagglutinin head epitopes, and these are divided by the length of their
+respective sequences. The dominant *p*-epitope measurement is the maximum of
+each of these probabilities, representing the different between the two strains
+at their most different epitope.
 
-Antigenic cartography analyses were conducted by Amanda
-Skarlupka, PhD, who continues to work with us on this project. In short,
-antigenic cartography uses a matrix where each row represents an individual
-in the study and each column represents an influenza strain. The cells of
-the matrix are populated with individual $i$'s titer to strain $j$.
-Multidimensional scaling (MDS) is used to reduce the matrix to a specified column
-dimension, while minimizing the change in the Euclidean distances between measurements. After performing iterative MDS on
-a variety of target dimensions, we found that two dimensions was satisfactory,
-and our maps were similar to those in @fonville2014. After calculating the
-MDS maps, we then obtained antigenic distances as the Euclidean distance
-between map coordinates of the vaccine strain and the other strains in the
-panel following the method of @cai2012. For the purposes of this analysis, we ignored longitudinal measurements between
-individuals, and treated each observation of an individual as a unique measurement. Finally, all of the antigenic distance were normalized *for each vaccine strain*. Therefore, each vaccine strain had a distance of 0 with itself, and the most distant historical strain had a distance of 1 with that strain. (We normalized all three of the distance measurements in this way.)
+Antigenic cartography analyses were conducted by Amanda Skarlupka, PhD, who
+continues to work with us on this project. In short, antigenic cartography uses
+a matrix where each row represents an individual in the study and each column
+represents an influenza strain. The cells of the matrix are populated with
+individual $i$'s titer to strain $j$. Multidimensional scaling (MDS) is used to
+reduce the matrix to a specified column dimension, while minimizing the change
+in the Euclidean distances between measurements. After performing iterative MDS
+on a variety of target column dimensions, we found that two dimensions was
+satisfactory, and our maps were similar to those in @fonville2014. After
+calculating the MDS maps, we obtained antigenic distances as the Euclidean
+distance between map coordinates of the vaccine strain and the other strains in
+the panel following the method of @cai2012. For the purposes of this analysis,
+we ignored longitudinal measurements between individuals, and treated each
+observation of an individual as a unique measurement. Finally, all of the
+antigenic distance were normalized *for each vaccine strain*. Therefore, each
+vaccine strain had a distance of 0 with itself, and the most distant historical
+strain had a distance of 1 with that strain. (We normalized all three of the
+distance measurements in this way.)
 
 After computing the normalized distance measurements, we fit simple linear
 regression models with either post-vaccination titer (measuring the absolute
@@ -145,12 +148,14 @@ knitr::include_graphics(here::here("Figures", "dist-dose-fits.png"))
 
 ### Proposed studies
 
-Going forward, we plan to consider more flexible models than the simple
-linear regression models we used in this step of the analysis. We will consider
+Going forward, we plan to consider more flexible models than the simple linear
+regression models we used in this step of the analysis. We will consider
 restricted spline GAMs and LOESS to fit a potentially nonlinear effect of
-antigenic distance, which we would expect in the presence of original antigenic sin if our panel contains strains which are distant enough to confer no cross-protection. We will also implement Bayesian multilevel generalizations of
-both the linear and spline models, in order to incorporate between-subject
-variability into the overall model fit.
+antigenic distance, which we would expect in the presence of original antigenic
+sin if our panel contains strains which are distant enough to confer no
+cross-protection. We will also implement Bayesian multilevel linear and spline
+models, in order to incorporate between-subject variability into the overall
+model fit.
 
 We will then compare our metrics to traditional metrics, notably the mean titer
 increase, HAI composite score [@abreu2020], and proportion of seroconverted
@@ -209,40 +214,42 @@ prior vaccination history and thus we can only use the UGA data for this aim.
 
 ### Preliminary results
 
-We first explored the homologous case in order to identify simple
-first-order effects of each of the covariates of interest. @fig-mada-eda shows
-plots of fold change in titer (titer increase) plotted against available
-covariates. The only covariate which independently explained a substantial
-proportion of the variance in the outcome was prevaccination titer. Note that
-these results do not consider interaction effects (or subgroup specific effects
-that can be modeled as interactions): for example, we would not expect
-to see an effect of dose in the entire population since otherwise healthy
-adults under the age of 65 were not offered high dose vaccine. The $R^2$
-metrics also only capture linear trend--if a predictor acts through a
-primarily nonlinear (especially true for nonmonotonic effects) the $R^2$ will drastically
-underestimate the strength of association between the two variables.
+We first explored the homologous case in order to identify simple first-order
+effects of each of the covariates of interest. @fig-mada-eda shows plots of fold
+change in titer (titer increase) plotted against available covariates. The only
+covariate which independently explained a substantial proportion of the variance
+in the outcome was prevaccination titer. Note that these results do not consider
+interaction effects (or subgroup specific effects that can be modeled as
+interactions): for example, we would not expect to see an effect of dose in the
+entire population since otherwise healthy adults under the age of 65 were not
+offered high dose vaccine. The $R^2$ metrics also only capture linear trend--if
+a predictor acts through a primarily nonlinear (especially true for nonmonotonic
+effects) the $R^2$ will drastically underestimate the strength of association
+between the two variables.
 
 ```{r}
 #| label: fig-mada-eda
 #| out-width: 6.25in
-#| fig-cap: "Homologous titer measurements in the UGAFluVac data plotted against
-#| available covariates. The blue line shown in each figure is a simple
-#| linear regression line, which was used to calculate the $R^2$ shown in
-#| each panel. The red diamonds indicate the mean of each level of the
-#| predictors, which are all discrete. Integer-valued predictors were
-#| treated as numeric for the purpose of these regression analyses. In
-#| these figures, responses to all influenza subtypes and vaccines are pooled
-#| together, without considering any correlations between clustered
-#| measurements."
+#| fig-cap: "Homologous titer increase to the
+#| influenza A(H1N1) Michigan-2015 strain in the UGAFluVac data, plotted
+#| against a variety of covariates. The size of the point corresponds to the
+#| number of overlapping measurements at that location. The purple vertical
+#| lines indicate medians, and the horizontal purple lines mark the 2.5th and
+#| 97.5th quantiles. While many of the univariate associations with titer
+#| increase are weak or difficult to see, many of these effects become
+#| much stronger when interactions are taken into effect. These trends
+#| also vary widely across other strains which are not shown."
 
 knitr::include_graphics(here::here("Figures", "Single_var_titer_panel.png"))
 ```
 
 From our exploratory analyses, we also know that the effect of prevaccination
-titer on the homologous immune response varies across vaccine strain and dose (@fig-pvt-lm). We fit stratified linear models with both parallel slopes (A and C) and varying slopes (B and D) with these two factors. We further expect to see
+titer on the homologous immune response varies across vaccine strain and dose
+(@fig-pvt-lm). We fit stratified linear models with both parallel slopes (A and
+C) and varying slopes (B and D) with these two factors. We further expect to see
 a third-order interaction between vaccine strain and dose. Note that these
-preliminary figures show all individuals, and the effect of dose will be
-further modified by age, since high dose vaccine was only offered to elderly
+preliminary figures show all individuals, and the effect of dose will be further
+modified by age, since high dose vaccine was only offered to elderly
 participants.
 
 ```{r}
@@ -387,16 +394,16 @@ dose, prior immunity, and vaccine response varies with antigenic distance. We wi
 
 ### Expected outcomes
 
-Our work on this aim will produce fitted Bayesian hierarchical models with
-inferential coefficient estimates for the effects of various drivers of the
-immune response. These effect estimates can be used to construct counterfactual
-predictions for individuals with specific characteristics. We will also
-train a suite of tuned predictive models, which will allow us to make
-accurate predictions of the immune response given an individual's pre-vaccination
-measurements, as well as understand the relative predictive power of each variable.
-Finally, we will produce updated mechanistic models, and use these models to determine
-whether B cell competition can explain patterns of immune response to
-heterologous strains.
+Our work on this aim will produce fitted inferential models, with estimates
+of the strength of the effect for pre-vaccination titer, prior vaccination
+history, and other drivers of the immune response. Our models will also
+provide estimates for the strength of interactions between these covariates.
+We will also produce a set of tuned predictive models. Estimates of the
+vaccine response for each individual will be computed from the inferential
+and the predictive models, and by comparing the two sets of predictions,
+we will estimate the performance of our inferential models. Finally, we will
+update the mechanistic models and compare patterns in mechanistic model
+results to the patterns observed in our data.
 
 ## Aim 3
 
@@ -455,25 +462,29 @@ standardized covariance matrix to the covariance matrix predicted by the DAG
 in order to determine how consistent our data are with the identified DAG.
 
 We will apply traditional regression methods using either cluster-robust
-standard error estimation or hierarchical modeling to obtain a causal estimate of the effect of
-dose, using a minimally sufficient adjustment set identified by our DAG. We will use quantitative bias analysis methodology to estimate the effect of unmeasured confounding on our estimate. Finally, we will obtain the same estimate using
-a targeted maximum likelihood estimation (TMLE) framework, which is doubly
-robust to model misspecification, and we can compare the TMLE estimate to the
-regression estimate.
+standard error estimation or hierarchical modeling to obtain a causal estimate
+of the effect of dose, using a minimally sufficient adjustment set identified by
+our DAG. We will use quantitative bias analysis methodology to estimate the
+effect of unmeasured confounding on our estimate. Finally, we will obtain the
+same estimate using a targeted maximum likelihood estimation (TMLE) framework,
+which is doubly robust to model misspecification, and we can compare the TMLE
+estimate to the regression estimate.
 
-We will explore the interaction of age and dose by estimating the causal
-effect of dose in both the UGAFluVac and RocFluVac studies separately and comparing
-these estimates to the combined study estimate. We note that differences in these estimates could be due to sampling variation, systematic variation between the two source populations, or due to the interaction effect with age. We can furthermore estimate interaction effects in all three situations.
+We will explore the interaction of age and dose by estimating the causal effect
+of dose in both the UGAFluVac and RocFluVac studies separately and comparing
+these estimates to the combined study estimate. We note that differences in
+these estimates could be due to sampling variation, systematic variation between
+the two source populations, or due to the interaction effect with age. We can
+furthermore estimate interaction effects in all three situations.
 
 ### Expected outcomes
 
-The outcomes of this aim will be causal estimates of the average treatment effect
-of vaccine dose on post-vaccination titer, controlling for age. The quantitative
-bias analysis for confounding and the comparison between regression and TMLE
-estimates will provide information about the limitations of our causal estimates.
-Finally, our separate analyses of the two study samples in addition to the
-combined analysis will allow us to compare estimates and gauge whether our
-assumption that combining age groups across study sites is valid.
+The outcomes of this aim will be estimates of the effect
+of vaccine dose on post-vaccination titer, controlling for age. We will
+estimate the amount of confounding bias in our causal effects, and compare
+the estimates from the two individual studies to the overall estimate. The
+individual study and confounding analyses will allow us to understand
+the limitations of our causal estimates.
 
 ## Timeline
 
