@@ -43,7 +43,7 @@ will use hierarchical statistical models and mechanistic models to disentangle
 the individual effects and interactions.
 
 <!-- Aim 3: Yang's strain-specific model vs. antigenic distance model -->
-**Aim 3. Explore how age and vaccine dose interact to effect the antibody response.**
+**Aim 3. Explore how age and vaccine dose interact to affect the antibody response.**
 The UGAFluVac cohort allows participants over the age of 65 to choose whether
 they receive FluZone standard dose or FluZone high dose, and Andrea Sant's
 cohort study administered FluZone HD to individuals aged 18 -- 49. By combining

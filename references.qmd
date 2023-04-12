@@ -13,5 +13,6 @@ conducted using `r version$version.string`. My proposal was created using
 [Quarto](https://quarto.org/) and is typeset in the *Atkinson Hyperlegible*
 font, provided by the [Braille
 Institute](https://brailleinstitute.org/freefont).
+
 # References {.unnumbered}
 ::: {#refs} :::
