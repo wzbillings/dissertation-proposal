@@ -42,6 +42,7 @@ This repository is structured as a quarto book project.
   * `renv`: housekeeping directory where the `renv` cache and other files are stored.
   * `.Rprofile`, `README.qmd`, `renv.lock`, `_reqs.R`, `dissertation-proposal.Rproj`: housekeeping files
 
+<!--
 ## Aims
 
 **Aim 1.** [soulful-snake](https://github.com/wzbillings/soulful-snake). Relationship between vaccine response and pre-existing immunity, modulation by vaccine dose, and comparison to Veronika's models.
@@ -49,6 +50,7 @@ This repository is structured as a quarto book project.
 **Aim 2.** [khaki-kite](https://github.com/wzbillings/khaki-kite). Antigenic distance, followup to Amanda's paper. Potentially modeling response with antigenic distance or comparing summary measures of breadth. 
 
 **Aim 3.** [gross-grouse](https://github.com/wzbillings/gross-grouse). Causal modeling of flu vaccine response or protection using DIVERsity data, Andrea Sant's data, Ted's Data, and/or Ben Cowling's data.
+-->
 
 ## Licensing
 
